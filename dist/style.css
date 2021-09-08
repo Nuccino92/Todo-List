@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+header {
+    height: 90px;
+    text-align: start;
+    font-size: 50px;
+    background-color: rgb(115, 109, 200);
+    box-shadow: 0px 0 5px 1px #888;
+}
+
+.logo-img {
+    position: absolute;
+    margin-top: -10px;
+    width: 100px;
+    height: 100px;
+}
+
+.title {
+    position: absolute;
+    margin-top: 13px;
+    margin-left: 100px;
+    font-family: 'Fredoka One';
+}
+
+.title {
+    cursor: pointer;
+}
+
+.nav {
+    width: 240px;
+    height: 100%;
+    background-color: rgb(181, 207, 248);
+    box-shadow: 1px 0 5px -2px #888;
+}
+
+.nav-todo-container {
+    padding-top: 20px;
+    text-align: center;
+    list-style-type: none;
+    font-size: 23px;
+    font-family: 'Cabin';
+    font-weight: bolder;
+    color: black
+}
+
+.nav-tab {
+    margin: 30px 0px 30px 0px;
+    padding: 5px;
+}
+
+.nav-tab:hover {
+    cursor: pointer;
+}
+
+#nav-home-tab:hover {
+    background-color: rgb(115, 109, 200, .35);
+}
+
+#nav-today-tab:hover {
+    background-color: rgb(115, 109, 200, .35);
+}
+
+#nav-week-tab:hover {
+    background-color: rgb(115, 109, 200, .35);
+}
+
+.list-container {
+    position: absolute;
+    border: 1px solid rgb(180, 180, 180);
+    left: 30%;
+    top: 20%;
+    height: 75%;
+    width: 55%;
+    border-radius: 20px;
+    font-family: 'Cabin';
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+.list-title {
+    border-bottom: 2px solid rgb(180, 180, 180);
+    padding: 8px 50px 8px 50px;
+    font-size: 25px;
+}
+
+/* #user-task-container {
+    THIS IS FOR THE APPENDED DIVS OF THE TODO'S
+} */
