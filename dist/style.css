@@ -17,6 +17,7 @@ header {
     font-size: 50px;
     background-color: rgb(115, 109, 200);
     box-shadow: 0px 0 5px 1px #888;
+    z-index: 100;
 }
 
 .logo-img {
@@ -38,6 +39,7 @@ header {
 }
 
 .nav {
+    display: grid;
     width: 240px;
     height: 100%;
     background-color: rgb(181, 207, 248);
@@ -51,7 +53,7 @@ header {
     font-size: 23px;
     font-family: 'Cabin';
     font-weight: bolder;
-    color: black
+    color: black;
 }
 
 .nav-tab {
@@ -75,16 +77,36 @@ header {
     background-color: rgb(115, 109, 200, .35);
 }
 
+#nav-add-tab {
+    text-align: center;
+    margin-left: 33.5%;
+    margin-top: 44px;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+    width: 80px;
+    background-color: rgb(51, 111, 190);
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
+}
+
+#nav-add-tab:hover {
+    background-color: rgba(62, 53, 199, 0.35);
+}
+
 .list-container {
     position: absolute;
-    border: 1px solid rgb(180, 180, 180);
-    left: 30%;
-    top: 20%;
-    height: 75%;
-    width: 55%;
-    border-radius: 20px;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 600px;
+    width: 1000px;
+    border: 3px solid rgb(115, 109, 200);
+    border-radius: 10px;
     font-family: 'Cabin';
-    box-shadow: 0px 0px 10px 0px black;
+    box-shadow: 4px 4px 0px 3px rgb(209, 255, 5);
 }
 
 .list-title {
@@ -93,6 +115,34 @@ header {
     font-size: 25px;
 }
 
+.todo-modal {
+    height: 500px;
+    width: 500px;
+    border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* #user-task-container {
     THIS IS FOR THE APPENDED DIVS OF THE TODO'S
+} */
+
+/* @media (max-width: 1510px) {
+    .nav {
+        display: none;
+    }
+    .list-container {
+        margin-left: -10px;
+    }
 } */
