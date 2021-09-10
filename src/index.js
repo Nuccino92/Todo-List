@@ -1,19 +1,11 @@
-// import { createButtonListeners } from "./modules/eventListeners";
+import { createTodoModal } from "./modules/eventListeners";
+import { createProject } from "./modules/projectStorage";
+import { createTask } from "./modules/taskStorage";
 
-// createButtonListeners()
-window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('chicken')
-})
 
-const addButton = document.querySelector('#poop');
 
-function createButtonListeners() {
-    
-    addButton.forEach(button => button.addEventListener('click', () => {
-        console.log('chicken')
-    }));
-    
-        
-    
-    }
-  createButtonListeners();
+createTodoModal();
+createTask();
+createProject();
+
+

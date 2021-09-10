@@ -103,10 +103,13 @@ header {
     transform: translate(-50%, -50%);
     height: 600px;
     width: 1000px;
-    border: 3px solid rgb(115, 109, 200);
     border-radius: 10px;
     font-family: 'Cabin';
-    box-shadow: 4px 4px 0px 3px rgb(209, 255, 5);
+    box-shadow: 0 0 5px 0px rgb(0, 0, 0);
+}
+
+.list-container.active {
+    display: none;
 }
 
 .list-title {
@@ -115,10 +118,151 @@ header {
     font-size: 25px;
 }
 
+.list {
+    /* container for the tasks/projects */
+}
+
 .todo-modal {
-    height: 500px;
-    width: 500px;
-    border: 1px solid black;
+    position: absolute;
+    display: none;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 600px;
+    width: 1000px;
+    border-radius: 10px;
+    font-family: 'Cabin';
+    box-shadow: 0 0 5px 0px rgb(0, 0, 0);
+    background-color: rgb(115, 109, 200);
+}
+
+.todo-modal.active {
+    display: initial;
+}
+
+.choice-header {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+}
+
+.task-modal {
+    position: fixed;
+    width: 50%;
+    text-align: center;
+    font-size: 40px;
+    border-top-left-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(115, 109, 200);
+}
+
+.task-modal.active {
+    background-color: rgb(181, 207, 248);
+    opacity: .67;
+}
+
+.project-modal {
+    position: fixed;
+    width: 50%;
+    right: 0;
+    text-align: center;
+    font-size: 40px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(181, 207, 248);
+    opacity: .67;
+}
+
+.project-modal.active {
+    background-color: rgb(115, 109, 200);
+    opacity: 1;
+}
+
+.submit-button {
+    position: absolute;
+    bottom: 7%;
+    left: 15%;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 2px solid black;
+    font-size: 45px;
+    font-weight: bolder;
+    font-family: 'Cabin';
+    background-color: rgb(89, 182, 89);
+    cursor: pointer;
+    color: white;
+}
+
+.cancel-button {
+    position: absolute;
+    bottom: 7%;
+    right: 15%;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 2px solid black;
+    font-size: 45px;
+    font-weight: bolder;
+    font-family: 'Cabin';
+    background-color: rgb(224, 58, 58);
+    cursor: pointer;
+    color: white;
+}
+
+.task-container {
+    display: block;
+    margin-top: 30px;
+    margin-left: 80px;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.task-container.active {
+    display: none;
+}
+
+.add-task-input {
+    border: none;
+    padding: 12px;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 32px;
+    background-color: rgb(181, 207, 248);
+    border-radius: 6px;
+}
+
+.project-container {
+    display: none;
+}
+
+.project-container.active {
+    display: initial;
+    display: block;
+    margin-top: 30px;
+    margin-left: 80px;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.add-project-input {
+    border: none;
+    padding: 12px;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 32px; 
+    background-color: rgb(181, 207, 248);
+    border-radius: 6px;  
+}
+
+.project-description {
+    border: none;
+    padding: 12px;
+    width: 90%;
+    height: 143px;
+    margin-top: 10px;
+    font-size: 25px;
+    background-color: rgb(181, 207, 248);
+    border-radius: 6px;
 }
 
 
@@ -134,9 +278,6 @@ header {
 
 
 
-/* #user-task-container {
-    THIS IS FOR THE APPENDED DIVS OF THE TODO'S
-} */
 
 /* @media (max-width: 1510px) {
     .nav {

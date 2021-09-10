@@ -20,16 +20,39 @@
             <li class="nav-tab" id="nav-add-tab"> &#65291;</li>
  
             <div class="projects-container" id="projects">Projects
-            <div class="poop">EYAA</div>
-            </div>
-            
+                <div class="projects-list-container" id="projects-list-container"></div>
+            </div>  
         </ul>
-        
     </nav>
 
     <div class="list-container">
         <h1 class="list-title">Home</h1>
+        <div class="list"></div>
     </div>
 
+    <div class="todo-modal">
+        <h3 class="choice-header">
+            <div class="task-modal">Task</div>
+            <div class="project-modal">Project</div>
+        </h3>
+        <form>
+        <div class="task-container">
+            <label class="add-task-label" for="add-task-input">Task</label>
+            <input class="add-task-input" id="task-title" type="text" placeholder="Name"/> 
+            <button class="submit-button" id="task-submit">Submit</button>
+            <button class="cancel-button" id="task-cancel">Cancel</button> 
+        </div>
+
+        <div class="project-container">
+            <label class="add-project-label" for="add-project-input">Project</label>
+            <input class="add-project-input" id="project-title" type="text" placeholder="Name"/> 
+            <label for="project-description">Project Description</label>
+            <textarea class="project-description" id="project-description-input" placeholder="Description"></textarea>
+            <button class="submit-button" id="project-submit">Submit</button>
+            <button class="cancel-button" id="project-cancel">Cancel</button>
+        </div>
+        </form>
+    </div>
+    
 </body>
 </html>
