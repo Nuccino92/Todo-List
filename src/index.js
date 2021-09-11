@@ -1,11 +1,9 @@
-import { createTodoModal } from "./modules/eventListeners";
-import { createProject } from "./modules/projectStorage";
-import { createTask } from "./modules/taskStorage";
+import { addModal } from "./modules/plusButton";
+import { createProject } from "./modules/projects";
+import { createTask } from "./modules/tasks";
 
 
 
-createTodoModal();
+addModal();
 createTask();
 createProject();
-
-

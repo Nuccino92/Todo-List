@@ -1,5 +1,7 @@
 
-function createTodoModal() {
+
+function addModal() {
+    
     const addButton = document.getElementById('nav-add-tab');
     const taskSubmit = document.getElementById('task-submit');
     const taskCancel = document.getElementById('task-cancel');
@@ -25,6 +27,7 @@ function createTodoModal() {
         taskSubmit.addEventListener('click', () => {
             document.querySelector('.list-container').classList.remove('active');
             document.querySelector('.todo-modal').classList.remove('active');
+            
         });
         projectSubmit.addEventListener('click', () => {
             document.querySelector('.list-container').classList.remove('active');
@@ -64,4 +67,4 @@ function createTodoModal() {
     }
 }
 
-export {createTodoModal}
+export {addModal}

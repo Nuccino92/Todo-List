@@ -118,10 +118,6 @@ header {
     font-size: 25px;
 }
 
-.list {
-    /* container for the tasks/projects */
-}
-
 .todo-modal {
     position: absolute;
     display: none;
@@ -265,7 +261,36 @@ header {
     border-radius: 6px;
 }
 
+.list {
+    max-height: 92%;
+    overflow-y: auto;
+    list-style-type: none;
+}
 
+.task-list {
+    font-size: 30px;
+    cursor: pointer;
+    margin: 7px 12px 7px 12px;
+    border-left: 3px solid yellow;
+    background-color: rgb(181, 207, 248);
+    box-shadow: 0px 0px 3px 1px grey;
+}
+
+.task-list:hover {
+    background-color: rgb(123, 123, 241);
+}
+
+.delete-task {
+    position: fixed;
+    margin: 7px 23px 0 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(./images/delete-icon.png);
+}
 
 
 

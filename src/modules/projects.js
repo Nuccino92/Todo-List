@@ -1,10 +1,8 @@
 
 
 
-
 function createProject() {
     
-    const listContainer = document.querySelector('.projects-list-container');
     const projects = [];
 
     const addProject = (e) => {
@@ -23,4 +21,4 @@ function createProject() {
     })
 }
 
-export {createProject}
+export { createProject }
