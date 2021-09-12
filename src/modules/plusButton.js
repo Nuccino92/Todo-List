@@ -1,5 +1,4 @@
 
-
 function addModal() {
     
     const addButton = document.getElementById('nav-add-tab');
@@ -25,25 +24,22 @@ function addModal() {
 
     function submitModal() {
         taskSubmit.addEventListener('click', () => {
-            document.querySelector('.list-container').classList.remove('active');
-            document.querySelector('.todo-modal').classList.remove('active');
-            
+            removeModal();
+            document.querySelector('form').reset();  
         });
         projectSubmit.addEventListener('click', () => {
-            document.querySelector('.list-container').classList.remove('active');
-            document.querySelector('.todo-modal').classList.remove('active'); 
+            removeModal();
         });
     }
 
     function cancelModal() {
         taskCancel.addEventListener('click', (e) => {
-            document.querySelector('.list-container').classList.remove('active');
-            document.querySelector('.todo-modal').classList.remove('active');
+            removeModal();
             e.preventDefault();
+            document.querySelector('form').reset(); 
         });
         projectCancel.addEventListener('click', (e) => {
-            document.querySelector('.list-container').classList.remove('active');
-            document.querySelector('.todo-modal').classList.remove('active');
+            removeModal();
             e.preventDefault();
         });
     }
@@ -65,6 +61,14 @@ function addModal() {
             document.querySelector('.task-modal').classList.add('active');
         })
     }
+    
+    function removeModal() {
+        document.querySelector('.list-container').classList.remove('active');
+        document.querySelector('.todo-modal').classList.remove('active');  
+    }
+    
 }
 
-export {addModal}
+
+
+export { addModal }

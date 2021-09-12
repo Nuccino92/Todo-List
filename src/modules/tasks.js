@@ -1,10 +1,14 @@
 
-const tasks = [];
+
+
 
 function createTask() {
      
+    const tasks = [];
+
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('task-submit').addEventListener('click',(e) => {
+            
             addTask(e);
         })
     })
@@ -12,56 +16,60 @@ function createTask() {
     const addTask = (e) => {
         e.preventDefault();
         
+        if(document.getElementById('task-title').value.length == 0) {
+            return alert('No task was added')
+        }
+        
         let task = {
             title: document.getElementById('task-title').value,
         }
         
         tasks.push(task);
-        document.querySelector('form').reset(); 
+        
         renderTasks(tasks);
     }
-}
 
-function renderTasks(tasks) {
-    const taskContainer = document.querySelector('.list');
+
     
-    taskContainer.innerHTML = '';
-
-    tasks.forEach(function(item) {
-        let newli = document.createElement('li');
-        
-        newli.classList.add('task-list');
-        newli.textContent = item.title;
-
-        const deleteIcon = document.createElement('btn');
-        deleteIcon.classList.add('delete-task');
-        
-        taskContainer.appendChild(newli);
-        newli.appendChild(deleteIcon);   
-    });
-    renderEvents();  
-}
-
-function renderEvents() {
     
-    const deleteButton = document.querySelector('.delete-task');
-    deleteButton.addEventListener('click', () => {
-        deleteTask();
-    })
-}
+    function renderTasks(tasks) {
+        const taskContainer = document.querySelector('.list');
+        
+        taskContainer.innerHTML = '';
 
-
-
-function deleteTask() {
-    let div = document.querySelector('.task-list')
-    for(let i = tasks.length -1; i >= 0; i--) {
-        if (div.innerText == tasks[i].title){
-            tasks.splice(i, 1);
-            
+        for(let i = 0; i < tasks.length; i++) {
+            createList(i); 
         }
-    }
+        
+        function createList(i) {
+            let newli = document.createElement('li');
+                
+            newli.classList.add('task-list');
+            newli.textContent = tasks[i].title;
+            taskContainer.appendChild(newli);
+            
+            createListDeleteButton(newli);
+            // createImportance();
+            // createDate();
+        }
+      
+        function createListDeleteButton(newli) {
+            const deleteIcon = document.createElement('btn');
+            deleteIcon.classList.add('delete-task');
+
+            
+            deleteIcon.addEventListener('click', () => { 
+
+                for(let i = tasks.length - 1; i >= 0; i--) {
+                    if(newli.innerText == tasks[i].title) {
+                        tasks.splice(i, 1);          
+                    }
+                }
+                newli.remove();
+            })
+            newli.appendChild(deleteIcon); 
+        }
+    } 
 }
-
-
 
 export { createTask }
