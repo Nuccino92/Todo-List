@@ -10,7 +10,7 @@ function addModal() {
     const projectButton = document.querySelector('.project-modal');
     
     addButton.addEventListener('click', () => {
-        modal();
+       return modal();
     })
     
     function modal() {
@@ -33,14 +33,12 @@ function addModal() {
     }
 
     function cancelModal() {
-        taskCancel.addEventListener('click', (e) => {
+        taskCancel.addEventListener('click', () => {
             removeModal();
-            e.preventDefault();
             document.querySelector('form').reset(); 
         });
-        projectCancel.addEventListener('click', (e) => {
+        projectCancel.addEventListener('click', () => {
             removeModal();
-            e.preventDefault();
         });
     }
 

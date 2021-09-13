@@ -25,33 +25,44 @@
         </ul>
     </nav>
 
-    <div class="list-container">
-        <h1 class="list-title">Home</h1>
+    <h1 class="list-container">
+        <div class="list-title">Home
+            <button type="button" class="alphabetical-sort-button">Name</button>
+            <button type="button" class="priority-sort-button">Priority</button>
+        </div>
         <div class="list"></div>
-    </div>
+    </h1>
 
     <div class="todo-modal">
-        <h3 class="choice-header">
+        <div class="choice-header">
             <div class="task-modal">Task</div>
             <div class="project-modal">Project</div>
-        </h3>
+        </div>
         <form>
         <div class="task-container">
             <label class="add-task-label" for="add-task-input">Task</label>
-            <input class="add-task-input" id="task-title" type="text" placeholder="Name"/> 
-            <button type="submit" class="submit-button" id="task-submit">Submit</button>
-            <button class="cancel-button" id="task-cancel">Cancel</button> 
+            <input class="add-task-input" id="task-title" type="text" placeholder="Name" maxlength="35"/> 
+            <div class="task-priority">
+                <div class="task-priority-title">Priority (optional)</div>
+                <div class="task-button-container">
+                    <button type="button" class="priority-button" id="low-priority" value="low">Low</button>
+                    <button type="button" class="priority-button" id="medium-priority" value="medium">Medium</button>
+                    <button type="button" class="priority-button" id="high-priority" value="high">High</button>
+                </div>
+            </div>
+            <button type="button" class="submit-button" id="task-submit">Submit</button>
+            <button type="button" class="cancel-button" id="task-cancel">Cancel</button> 
         </div>
         </form>
         
         <form>
         <div class="project-container">
             <label class="add-project-label" for="add-project-input">Project</label>
-            <input class="add-project-input" id="project-title" type="text" placeholder="Name"/> 
+            <input class="add-project-input" id="project-title" type="text" placeholder="Name" maxlength="35"/> 
             <label for="project-description">Project Description</label>
             <textarea class="project-description" id="project-description-input" placeholder="Description"></textarea>
-            <button type="submit" class="submit-button" id="project-submit">Submit</button>
-            <button class="cancel-button" id="project-cancel">Cancel</button>
+            <button type="button" class="submit-button" id="project-submit">Submit</button>
+            <button type="button" class="cancel-button" id="project-cancel">Cancel</button>
         </div>
         </form>
     </div>
