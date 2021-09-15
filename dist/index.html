@@ -26,9 +26,14 @@
     </nav>
 
     <h1 class="list-container">
-        <div class="list-title">Home
-            <button type="button" class="alphabetical-sort-button">Name</button>
-            <button type="button" class="priority-sort-button">Priority</button>
+        <div class="list-title">
+            <div class="header">Inbox</div>
+            <div class="list-button-container">
+                <button type="button" class="alphabetical-sort-button">Name</button>
+                <button type="button" class="date-sort-button">Date</button>
+                <button type="button" class="priority-sort-button">Priority</button>
+                <button type="button" class="delete-all-button">del</button>
+            </div>
         </div>
         <div class="list"></div>
     </h1>
@@ -38,7 +43,7 @@
             <div class="task-modal">Task</div>
             <div class="project-modal">Project</div>
         </div>
-        <form>
+        <form onkeydown="return event.key != 'Enter';">
         <div class="task-container">
             <label class="add-task-label" for="add-task-input">Task</label>
             <input class="add-task-input" id="task-title" type="text" placeholder="Name" maxlength="35"/> 
@@ -49,13 +54,17 @@
                     <button type="button" class="priority-button" id="medium-priority" value="medium">Medium</button>
                     <button type="button" class="priority-button" id="high-priority" value="high">High</button>
                 </div>
+                <div class="date-container">
+                    <label for="date">Date (optional)</label>
+                    <input type="date" class="date"/>
+                </div>
             </div>
             <button type="button" class="submit-button" id="task-submit">Submit</button>
             <button type="button" class="cancel-button" id="task-cancel">Cancel</button> 
         </div>
         </form>
         
-        <form>
+        <form onkeydown="return event.key != 'Enter';">
         <div class="project-container">
             <label class="add-project-label" for="add-project-input">Project</label>
             <input class="add-project-input" id="project-title" type="text" placeholder="Name" maxlength="35"/> 
@@ -66,6 +75,5 @@
         </div>
         </form>
     </div>
-    
 </body>
 </html>

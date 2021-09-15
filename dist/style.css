@@ -112,9 +112,17 @@ header {
 }
 
 .list-title {
-    border-bottom: 2px solid rgb(180, 180, 180);
     padding: 8px 50px 8px 50px;
     font-size: 25px;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    width: 90px;
+    margin-left: 17px;
+    border-right: 1px solid black;
+
 }
 
 .todo-modal {
@@ -255,6 +263,26 @@ header {
     background-color: rgb(224, 58, 58);
 }
 
+.date-container {
+    position: absolute;
+    text-align: center;
+    top: 39%;
+    right: 9.7%;
+}
+
+.date {
+    display: block;
+    height: 50px;
+    width: 180px;
+    margin-top: 37px;
+    padding: 5px;
+    border: 2px solid blue;
+    background-color: rgb(181, 207, 248);
+    font-family: 'Fredoka One';
+    font-size: 17px;
+    cursor: pointer;
+}
+
 .project-container {
     display: none;
 }
@@ -298,10 +326,43 @@ header {
 
 .alphabetical-sort-button {
     cursor: pointer;
+    border: none;
+    font-size: 17px;
+    margin-left: 71px;
+    background: none;
+}
+
+.date-sort-button {
+    position: fixed;
+    right: 0;
+    margin-right: 310px;
+    margin-top: 9px;
+    cursor: pointer;
+    border: none;
+    font-size: 17px;
+    background: none;
 }
 
 .priority-sort-button {
+    position: fixed;
+    right: 0;
+    margin-right: 134px;
+    margin-top: 9px;
     cursor: pointer;
+    border: none;
+    font-size: 17px;
+    background: none;
+}
+
+.delete-all-button {
+    position: fixed;
+    right: 0;
+    margin-right: 26.5px;
+    margin-top: 9px;
+    cursor: pointer;
+    border: none;
+    font-size: 17px; 
+    background: none;
 }
 
 .task-list {
@@ -317,6 +378,19 @@ header {
 
 .task-list:hover {
     background-color: rgb(123, 123, 241);
+}
+
+.date-icon {
+    position: fixed;
+    margin: 7px 0 0 650px;
+    left: 0;
+    padding: 1px 10px 1px 10px;
+    text-align: center;
+    font-size: 17px;
+    color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: rgb(51, 111, 190);
 }
 
 .priority-icon {
