@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
     <link rel="stylesheet" href="style.css"/>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script> 
     <script src="main.js" defer></script>
 </head>
 <body>
@@ -38,6 +39,14 @@
         <div class="list"></div>
     </h1>
 
+    <div class="project-description-container">
+        <div class="project-description-container-title"></div>
+        <textarea class="project-text-area"></textarea>
+        <button type="button" class="save-description-button">Save</button>
+        <button type="button" class="exit-description-button">Exit</button>
+        <button type="button" class="delete-project-button">Delete</button>
+    </div>
+
     <div class="todo-modal">
         <div class="choice-header">
             <div class="task-modal">Task</div>
@@ -67,7 +76,7 @@
         <form onkeydown="return event.key != 'Enter';">
         <div class="project-container">
             <label class="add-project-label" for="add-project-input">Project</label>
-            <input class="add-project-input" id="project-title" type="text" placeholder="Name" maxlength="35"/> 
+            <input class="add-project-input" id="project-title" type="text" placeholder="Name" maxlength="18"/> 
             <label for="project-description">Project Description</label>
             <textarea class="project-description" id="project-description-input" placeholder="Description"></textarea>
             <button type="button" class="submit-button" id="project-submit">Submit</button>

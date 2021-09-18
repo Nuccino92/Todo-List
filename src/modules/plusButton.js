@@ -20,6 +20,7 @@ function addModal() {
         cancelModal();
         taskSetup();
         projectSetup();
+        document.querySelector('.project-description-container').classList.remove('active');
     }
 
     function submitModal() {
@@ -29,6 +30,7 @@ function addModal() {
         });
         projectSubmit.addEventListener('click', () => {
             removeModal();
+            document.forms[1].reset();  
         });
     }
 
@@ -39,6 +41,7 @@ function addModal() {
         });
         projectCancel.addEventListener('click', () => {
             removeModal();
+            document.forms[1].reset();  
         });
     }
 
@@ -62,7 +65,8 @@ function addModal() {
     
     function removeModal() {
         document.querySelector('.list-container').classList.remove('active');
-        document.querySelector('.todo-modal').classList.remove('active');  
+        document.querySelector('.todo-modal').classList.remove('active'); 
+        document.forms[0].reset();
     }
     
 }

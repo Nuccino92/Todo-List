@@ -2,21 +2,33 @@ import { getWeek } from "date-fns";
 
 
 function createTask() { 
-    
+  
     const tasks = [];
 
-    const addTask = () => { // recieves and pushes tasks properties 
 
+    const addTask = () => { // recieves and pushes tasks properties 
+        
         let task = {
             
             title: document.getElementById('task-title').value,
             priority: addTask.priority,
             date: addTask.date,
         }
+        
+        
         tasks.push(task);
         renderTasks(tasks);
+
+        storeLocalTasks();
+        console.log(tasks)
         
         addTask.priority = undefined; // resets the priority so it doesnt keep the old event listener value
+        
+      
+    }
+
+    function storeLocalTasks() { //gets setting local storage 
+        localStorage.setItem('tasks', JSON.stringify(tasks))
     }
     
     
@@ -29,7 +41,7 @@ function createTask() {
             
             if(document.getElementById('task-title').value.length == 0) {
                 addTask.priority = undefined;   //so it doesn't set priority value if the alert pops up
-                return alert('No task was added');
+                return alert('The name field was empty');
             }
                 showInbox();
                 addTask();
@@ -89,30 +101,175 @@ function createTask() {
             
         })
 
-        document.querySelector('.delete-all-button').addEventListener('click', () => {
-            removeAllTasks();
-        })
-
         document.getElementById('nav-home-tab').addEventListener('click', () => {
+            document.querySelector('.project-description-container').classList.remove('active');
             showInbox();
         })
         
         document.getElementById('nav-today-tab').addEventListener('click', () => {
+            document.querySelector('.project-description-container').classList.remove('active');
             document.querySelector('.header').innerText = 'Today';
             showListToday();
-
         })
 
         document.getElementById('nav-week-tab').addEventListener('click', () => {
+            document.querySelector('.project-description-container').classList.remove('active');
             document.querySelector('.header').innerText = 'Week';
             showListWeek();
         })
 
-    }   
+    }  
+    
+        document.querySelector('.title').addEventListener('click', () => {
+            document.querySelector('.project-description-container').classList.remove('active');
+            showInbox();
+        })
+
+        document.querySelector('.delete-all-button').addEventListener('click', () => {
+            confirmDelete();
+        })
     
     taskEvents();
         
 
+    
+    function showDate (newli, date) {
+        const dateIcon = document.createElement('span');
+        dateIcon.classList.add('date-icon');
+        dateIcon.innerText = date;
+        if (date == '') {
+            dateIcon.innerText = 'No date';
+        }
+        newli.appendChild(dateIcon);
+    }
+
+        
+    function sortTaskListAlphaStart() { //sorts tasks array form lowest to highest title, then renders
+        tasks.sort(function(a, b) {
+                if (a.title < b.title) {return -1};
+                if (a.title > b.title) {return 1};
+                return 0;
+            })
+            renderTasks(tasks);
+    }
+
+    
+    function sortTaskListAlphaEnd() { //sorts tasks array form higest to lowest title, then renders
+        tasks.sort(function(a, b) {
+                if (a.title > b.title) {return -1};
+                if (a.title < b.title) {return 1};
+                return 0;
+            })
+            renderTasks(tasks);  
+    }
+
+    
+    function sortPriorityHigh() { //sorts tasks array from high priority to low/undefined, then renders
+        let priorities = {
+            undefined: 0,
+            low: 1,
+            medium: 2,
+            high: 3,
+        };
+
+        tasks.sort(function(a, b) {
+            return priorities[b.priority] - priorities[a.priority];
+        })
+        renderTasks(tasks); 
+    }
+
+    
+    function sortPriorityLow() { //sorts tasks array from undefined/low to high priority, then renders
+        let priorities = {
+            undefined: 0,
+            low: 1,
+            medium: 2,
+            high: 3,
+        };
+
+        tasks.sort(function(a, b) {
+            return priorities[a.priority] - priorities[b.priority];
+        })
+        renderTasks(tasks); 
+    };
+    
+    
+    function sortDateHigh() {
+        tasks.sort(function(a, b) {
+            if(a.date && b.date == '') {
+                return -1;
+            }
+            
+            if (a.date < b.date) {return -1};
+            if (a.date > b.date) {return 1};
+                return 0;
+        })
+        renderTasks(tasks);
+    }
+
+
+    function sortDateLow() {
+        tasks.sort(function(a, b) {
+            if(a.date && b.date == '') {
+                return -1;
+            }
+
+            if (a.date > b.date) {return -1};
+            if (a.date < b.date) {return 1};
+                return 0;
+        })
+        renderTasks(tasks) 
+    }
+    
+
+    function confirmDelete() {
+        let confirmA = confirm('This will delete all of your tasks');
+        if (confirmA) { return removeAllTasks()} 
+            else {return}
+    }
+
+    function removeAllTasks() {
+        while(tasks.length > 0) {
+            tasks.pop();
+        }
+            renderTasks(tasks);
+    }
+
+
+    function showInbox() {
+        document.querySelector('.header').innerText = 'Inbox';
+        renderTasks(tasks);    
+    }
+
+    function showListToday() {
+        let array = [];
+        
+        for(let i = 0; i < tasks.length; i++) {
+            let result = new Date().getUTCDate(); 
+            
+            if(result == new Date(tasks[i].date).getUTCDate()) {
+                array.push(tasks[i]);
+            }
+        }
+        renderTasks(array); 
+    }
+
+    function showListWeek() {
+        let array = [];
+        for(let i = 0; i < tasks.length; i++) {
+            let result = new Date(tasks[i].date);
+            let week = getWeek(new Date())
+            
+            if(getWeek(result) == week) {
+                array.push(tasks[i]);
+            }
+            renderTasks(array);
+        }   
+    }
+
+    
+    
+    
     function renderTasks(tasks) { //creates the div to hold a task 
         const taskContainer = document.querySelector('.list');
         
@@ -166,13 +323,13 @@ function createTask() {
 
                 for(let i = tasks.length - 1; i >= 0; i--) {
                     if(newliTitle.innerText == tasks[i].title) {
-                        tasks.splice(i, 1); 
-                        
+                        tasks.splice(i, 1);        
                     }
                 }
                 newli.remove();
+                storeLocalTasks(); 
             })
-            newli.appendChild(deleteIcon); 
+            newli.appendChild(deleteIcon);
         }
     } 
         
@@ -196,138 +353,23 @@ function createTask() {
             if (priorityIcon.innerText == 'undefined'){
                 priorityIcon.style.background = 'purple';
             }
-
             newli.appendChild(priorityIcon);
         }
 
+    
+    $(window).on('load', loadLocalStorage); //jQuery for multiple onload events
+    
+    function loadLocalStorage() {  //on startup gets the tasks array and returns it, following this render it
+        let myTasks_deserialized = JSON.parse(localStorage.getItem('tasks'));
         
-        function showDate (newli, date) {
-            const dateIcon = document.createElement('span');
-            dateIcon.classList.add('date-icon');
-            dateIcon.innerText = date;
-            if (date == '') {
-                dateIcon.innerText = 'No date';
-            }
-            newli.appendChild(dateIcon);
-        }
-
+        if (myTasks_deserialized == null) { return }
         
-        function sortTaskListAlphaStart() { //sorts tasks array form lowest to highest title, then renders
-            tasks.sort(function(a, b) {
-                    if (a.title < b.title) {return -1};
-                    if (a.title > b.title) {return 1};
-                    return 0;
-                })
-                renderTasks(tasks);
-        }
+        myTasks_deserialized.forEach(index => {
+            tasks.push(index);
+        })
+        renderTasks(tasks)
+    }
 
-        
-        function sortTaskListAlphaEnd() { //sorts tasks array form higest to lowest title, then renders
-            tasks.sort(function(a, b) {
-                    if (a.title > b.title) {return -1};
-                    if (a.title < b.title) {return 1};
-                    return 0;
-                })
-                renderTasks(tasks);  
-        }
-
-        
-        function sortPriorityHigh() { //sorts tasks array from high priority to low/undefined, then renders
-            let priorities = {
-                undefined: 0,
-                low: 1,
-                medium: 2,
-                high: 3,
-            };
-
-            tasks.sort(function(a, b) {
-                return priorities[b.priority] - priorities[a.priority];
-            })
-            renderTasks(tasks); 
-        }
-
-        
-        function sortPriorityLow() { //sorts tasks array from undefined/low to high priority, then renders
-            let priorities = {
-                undefined: 0,
-                low: 1,
-                medium: 2,
-                high: 3,
-            };
-
-            tasks.sort(function(a, b) {
-                return priorities[a.priority] - priorities[b.priority];
-            })
-            renderTasks(tasks); 
-        };
-       
-        
-        function sortDateHigh() {
-            tasks.sort(function(a, b) {
-                if(a.date && b.date == '') {
-                    return -1;
-                }
-                
-                if (a.date < b.date) {return -1};
-                if (a.date > b.date) {return 1};
-                    return 0;
-            })
-            renderTasks(tasks);
-        }
-
- 
-        function sortDateLow() {
-            tasks.sort(function(a, b) {
-                if(a.date && b.date == '') {
-                    return -1;
-                }
-
-                if (a.date > b.date) {return -1};
-                if (a.date < b.date) {return 1};
-                    return 0;
-            })
-            renderTasks(tasks) 
-        }
-        
-
-        function removeAllTasks() {
-            //  tasks = [];
-            //  renderTasks(tasks);
-            console.log('chicken')
-        }
-
-
-        function showInbox() {
-            document.querySelector('.header').innerText = 'Inbox';
-            renderTasks(tasks);    
-        }
-
-        function showListToday() {
-            let array = [];
-            
-            for(let i = 0; i < tasks.length; i++) {
-                let result = new Date().getUTCDate(); 
-             
-                if(result == new Date(tasks[i].date).getUTCDate()) {
-                    array.push(tasks[i]);
-                }
-            }
-            renderTasks(array)  
-        }
-
-        function showListWeek() {
-            let array = [];
-            for(let i = 0; i < tasks.length; i++) {
-                let result = new Date(tasks[i].date);
-                let week = getWeek(new Date())
-                
-                if(getWeek(result) == week) {
-                    array.push(tasks[i]);
-                }
-                renderTasks(array)
-            }
-            
-        }
 }
 
     

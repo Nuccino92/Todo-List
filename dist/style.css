@@ -96,6 +96,27 @@ header {
     background-color: rgba(62, 53, 199, 0.35);
 }
 
+.projects-list-container {
+    margin: 15px 10px 0 10px;
+    height: 250px;
+    font-size: 20px;
+    max-height: 92%;
+    overflow-y: auto;
+    list-style-type: none;
+    border: 3px inset rgb(51, 111, 190);
+    border-radius: 5px;
+    background-color: rgb(115, 109, 200);
+}
+
+.small-proj-list {
+    padding: 3px 0 3px 0;
+    cursor: pointer;
+}
+
+.small-proj-list:hover {
+    background-color: rgb(181, 207, 248);
+}
+
 .list-container {
     position: absolute;
     top: 58%;
@@ -105,6 +126,7 @@ header {
     width: 1000px;
     border-radius: 10px;
     box-shadow: 0 0 5px 0px rgb(0, 0, 0);
+    background-color: rgb(115, 109, 200);
 }
 
 .list-container.active {
@@ -114,6 +136,7 @@ header {
 .list-title {
     padding: 8px 50px 8px 50px;
     font-size: 25px;
+    border-bottom: 1px solid black;
 }
 
 .header {
@@ -122,7 +145,6 @@ header {
     width: 90px;
     margin-left: 17px;
     border-right: 1px solid black;
-
 }
 
 .todo-modal {
@@ -229,6 +251,7 @@ header {
     font-size: 32px;
     background-color: rgb(181, 207, 248);
     border-radius: 6px;
+    resize: none;
 }
 
 .task-button-container {
@@ -304,7 +327,8 @@ header {
     margin-bottom: 20px;
     font-size: 32px; 
     background-color: rgb(181, 207, 248);
-    border-radius: 6px;  
+    border-radius: 6px;
+    resize: none;  
 }
 
 .project-description {
@@ -316,6 +340,7 @@ header {
     font-size: 25px;
     background-color: rgb(181, 207, 248);
     border-radius: 6px;
+    resize: none;
 }
 
 .list {
@@ -418,23 +443,114 @@ header {
     cursor: pointer;
 }
 
+.project-description-container {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 600px;
+    width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0px rgb(0, 0, 0);
+    z-index: 1;
+    display: none;
+    background-color: rgb(115, 109, 200);
+}
 
+.project-description-container.active {
+    display: initial;
+}
 
+.project-description-container-title {
+    text-align: center;
+    padding: 10px 0 10px 0;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-size: 45px;
+    background-color: rgb(115, 109, 200);
+    color: white;
+    font-family: 'Fredoka One';
+}
 
+.project-text-area {
+    position: absolute;
+    width: 88%;
+    height: 70%;
+    margin: 60px;
+    margin-top: 30px;
+    padding: 6px;
+    background-color: rgb(181, 207, 248);
+    border-radius: 6px;
+    resize: none;
+    font-size: 20px;
+}
 
+.save-description-button {
+    position: fixed;
+    bottom: 0;
+    width: 100px;
+    margin-left: 110px;
+    margin-bottom: 15px;
+    padding: 1px 15px 1px 15px;
+    font-size: 30px;
+    border-radius: 3px;
+    border: 1px solid white;
+    background-color: rgb(89, 182, 89);
+    color: white;
+    cursor: pointer;
+}
 
+.save-description-button:active {
+    opacity: .83;
+    box-shadow: 0 0 2px 1px rgb(37, 37, 37);
+}
 
+.exit-description-button {
+    position: fixed;
+    bottom: 0;
+    width: 100px;
+    margin-left: 280px;
+    margin-bottom: 15px;
+    padding: 1px 15px 1px 15px;
+    font-size: 30px;
+    border-radius: 3px;
+    border: 1px solid white;
+    background-color: rgb(65, 60, 83);
+    color: white;
+    cursor: pointer;
+}
 
+.exit-description-button:active {
+    opacity: .83;
+    box-shadow: 0 0 2px 1px rgb(37, 37, 37);
+}
 
+.delete-project-button {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 90px;
+    margin-right: 90px;
+    margin-bottom: 15px;
+    padding: 3px 15px 3px 15px;
+    font-size: 21px;
+    border-radius: 3px;
+    border: 1px solid white;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
 
+.delete-project-button:active {
+    opacity: .83;
+    box-shadow: 0 0 2px 1px rgb(37, 37, 37);
+}
 
-
-
-/* @media (max-width: 1510px) {
+@media (max-width: 1510px) {
     .nav {
         display: none;
     }
     .list-container {
         margin-left: -10px;
     }
-} */
+}
